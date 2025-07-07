@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Chacalito 💘</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffeaf4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #abrirPregunta {
+      font-size: 20px;
+      padding: 12px 24px;
+      background-color: #ff66b2;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: #fff0f5;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      width: 350px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    .modal-content p {
+      font-size: 20px;
+      color: #d63384;
+      margin-bottom: 20px;
+    }
+    .modal-content button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+    }
+    #siBtn {
+      background-color: #ff99c8;
+      color: white;
+    }
+    #noBtn {
+      background-color: #ffc2d1;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<button id="abrirPregunta">Haz clic, precioso 😘</button>
+
+<div class="modal" id="modal">
+  <div class="modal-content" id="modalContent">
+    <p id="pregunta">¿Quieres seguir siendo mi chacalito? 💘</p>
+    <button id="siBtn">Sí</button>
+    <button id="noBtn">No</button>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("modal");
+  const abrirPregunta = document.getElementById("abrirPregunta");
+  const siBtn = document.getElementById("siBtn");
+  const noBtn = document.getElementById("noBtn");
+  const pregunta = document.getElementById("pregunta");
+
+  let noClickCount = 0;
+
+  abrirPregunta.addEventListener("click", (e) => {
+    e.preventDefault();
+    modal.style.display = "flex";
+    pregunta.textContent = "¿Quieres seguir siendo mi chacalito? 💘";
+  });
+
+  siBtn.addEventListener("click", () => {
+    pregunta.textContent = "¿Qué pasó, precioso? ¿Por qué tan enojado? 😢";
+  });
+
+  noBtn.addEventListener("click", () => {
+    noClickCount++;
+    if (noClickCount === 1) {
+      pregunta.textContent = "Ándale precioso... 😳";
+    } else if (noClickCount === 2) {
+      pregunta.textContent = "¿Qué van a decir nuestros hijos? 👶❤️";
+    } else if (noClickCount === 3) {
+      pregunta.textContent = "¿Y nuestras fotos juntos? 😭";
+    } else {
+      pregunta.textContent = "Ya pues, tú ganas... pero te amo 😔💕";
+    }
+  });
+
+  // Cerrar modal si se toca fuera
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+      noClickCount = 0;
+    }
+  });
+</script>
+
+</body>
+</html>
